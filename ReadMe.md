@@ -94,6 +94,7 @@ Proposed Structure:
 
 Outline
 
+jsx
 ```javascript
 import React, { useState, useEffect } from 'react';
 
@@ -194,6 +195,14 @@ function ThemeSelector() {
   );
 }
 
+function KoFiButton() {
+  return (
+    <a href="https://ko-fi.com/remiliagrimm" target="_blank" className="ko-fi-button"><img src="https://ko-fi.com/img/button-3.png" height="36"></a>
+  );
+}
+
+export default KoFiButton;
+
 function App() {
   return (
     <div className={isDarkMode ? 'dark-mode' : 'vaporwave
@@ -207,9 +216,24 @@ For accessible dark mode, it's important to choose a font that has high contrast
 For vaporwave mode:
 We may want to use a font that has a retro or futuristic feel, such as Aileron, Neon 80s, or Retro Wave. The font-family property in CSS to set the font for the entire app or for specific elements.
 
+Setting up Tailwind:
+
+To use Tailwind CSS, we need to install it into the project.
+Using npm: 
+
+```bash
+npm install tailwindcss
+```
+
+Create a tailwind.css file in the project and import it into the app.
+
 Tailwind CSS for the accessible dark mode and vaporwave modes, including font choices:
 
 ```css
+/* Import the base Tailwind CSS styles */
+@import 'tailwindcss/base';
+
+
 // Base styles
 body {
   font-family: 'Helvetica Neue', sans-serif;
@@ -252,6 +276,15 @@ body {
   color: #ff00ff;
   font-family: 'Retro Wave', sans-serif;
 }
+
+.ko-fi-button {
+  display: inline-block;
+  margin: 10px;
+  @apply bg-white text-gray-700 font-medium py-2 px-4 border border-gray-400 rounded shadow;
+}
+
+/* Import the Tailwind CSS utility classes */
+@import 'tailwindcss/utilities';
 ```
 
 This example sets the font-family property for each mode to Roboto for the accessible dark mode and Retro Wave for the vaporwave mode. You can of course substitute any other font you prefer.
@@ -270,9 +303,9 @@ Building the Electron MERN app:
     Use Electron to package the MERN app as a desktop application that can be run on Windows, macOS, and Linux.
 
 Rough outline of the steps involved:
-```{warning}
+{ warning }
 > Note: This is purely from what I could glean from the documentation and some lectures I watched, I have yet to build the Electron App, so I don't know how feasible this is, but it should work based on what I have reviewed. 
-```
+{ /warning }
 
     Set up back-end API:
         Install Node.js and MongoDB on dev machine.
